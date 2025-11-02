@@ -19,18 +19,15 @@ import ToggleSwitch from './components/ToggleSwitch';
 import ProductCreationHeader from './components/ProductCreationHeader';
 import ProductTypeSelection from './components/ProductTypeSelection';
 import CheckoutPreview from './components/CheckoutPreview';
+import { useNavigate } from 'react-router-dom';
 
 // --- STYLES ---
 const formInputClasses =
   'bg-transparent border-0 border-b-2 border-slate-200 focus:ring-0 focus:outline-none focus:border-purple-600 transition duration-300 w-full py-3 px-1';
 
-interface ProductCreationPageProps {
-  setCurrentPage: (page: PageType) => void;
-}
+const ProductCreationPage = () => {
+  const navigate = useNavigate();
 
-const ProductCreationPage: React.FC<ProductCreationPageProps> = ({
-  setCurrentPage,
-}) => {
   const [view, setView] = useState<'type-selection' | 'form'>('type-selection');
   const [formData, setFormData] = useState<ProductFormData>(INITIAL_FORM_DATA);
 
@@ -270,7 +267,7 @@ const ProductCreationPage: React.FC<ProductCreationPageProps> = ({
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        setCurrentPage('after-submit');
+        navigate('/products/submitted');
       }}
       className="mt-10 animate-fade-in"
     >
@@ -953,7 +950,7 @@ const ProductCreationPage: React.FC<ProductCreationPageProps> = ({
 
   return (
     <div className="h-full w-full text-slate-800 bg-[linear-gradient(120deg,#f9f7fd_0%,#eef2f9_100%)] p-4 sm:p-6 lg:p-8 overflow-y-auto">
-      <ProductCreationHeader onBack={() => setCurrentPage('products')} />
+      <ProductCreationHeader onBack={() => navigate('/products')} />
       {view === 'type-selection' ? (
         <ProductTypeSelection onSelect={handleProductTypeSelect} />
       ) : (

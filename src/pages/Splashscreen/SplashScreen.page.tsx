@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-// import { useAuth } from '@/contexts/AuthContext';
+import { useAuth } from '@/contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 // import Maintenance from './Maintenance'; // Pastikan path ini benar
 
 // Nama komponen diubah menjadi IndexPage untuk kejelasan,
@@ -32,8 +33,8 @@ export default function SplashScreen() {
 
 // Komponen SplashScreen dipisahkan agar kode lebih rapi
 function Loading() {
-  // const navigate = useNavigate();
-  // const { state } = useAuth();
+  const navigate = useNavigate();
+  const { state } = useAuth();
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [loadingText, setLoadingText] = useState('Memulai aplikasi...');
 
@@ -69,27 +70,22 @@ function Loading() {
 
   // Efek untuk navigasi setelah loading auth selesai
   useEffect(() => {
-    // if (!state.loading) {
-    // Set progress ke 100% saat auth selesai
-    setLoadingProgress(100);
-    setLoadingText('Selesai!');
+    if (!state.loading) {
+      // Set progress ke 100% saat auth selesai
+      setLoadingProgress(100);
+      setLoadingText('Selesai!');
 
-    // Tunggu sejenak agar animasi 100% terlihat, lalu navigasi
-    setTimeout(() => {
-      // if (state.isAuthenticated) {
-      //   if (state.user?.role === 'admin') {
-      //     navigate('/dashboard/admin', { replace: true });
-      //   } else {
-      //     navigate('/dashboard', { replace: true });
-      //   }
-      // } else {
-      //   // Arahkan ke halaman utama publik (landing page)
-      //   navigate('/home', { replace: true });
-      // }
-    }, 500); // Penundaan singkat
-    // }
-    // }, [state.loading, state.isAuthenticated, state.user, navigate]);
-  }, []); // semenstara
+      // Tunggu sejenak agar animasi 100% terlihat, lalu navigasi
+      setTimeout(() => {
+        if (state.isAuthenticated) {
+          navigate('/dashboard', { replace: true });
+        } else {
+          // Arahkan ke halaman utama publik (landing page)
+          navigate('/home', { replace: true });
+        }
+      }, 500); // Penundaan singkat
+    }
+  }, [state.loading, state.isAuthenticated, state.user, navigate]);
   //
   // JSX untuk SplashScreen (kode asli Anda)
   return (

@@ -6,13 +6,8 @@ import { Card } from './components/Card';
 import { ProjectCard } from './components/ProjectCard';
 import { RightSidebar } from './components/RightSidebar';
 import { dashboardProjects } from '../../constants/data';
-import type { PageType } from '../../types';
 
-interface DashboardPageProps {
-  setCurrentPage: (page: PageType) => void;
-}
-
-const DashboardPage: React.FC<DashboardPageProps> = ({ setCurrentPage }) => {
+const DashboardPage = () => {
   return (
     <div className="flex-1 flex flex-col">
       <Header title="Dashboard">
@@ -45,7 +40,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({ setCurrentPage }) => {
             </div>
           </Card>
         </div>
-        <RightSidebar setCurrentPage={setCurrentPage} />
+        <RightSidebar />
       </div>
     </div>
   );

@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { type VariantProps } from 'class-variance-authority'; // Hapus import 'cva'
 
-import { cn } from '../utils';
+import { cn } from '@/lib/utils';
+
 import { buttonVariants } from './button.variants'; // <-- Impor dari file baru
 
 // Hapus deklarasi const buttonVariants dari sini
@@ -28,3 +29,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = 'Button';
 
 export { Button }; // <-- Hanya ekspor komponen Button
+

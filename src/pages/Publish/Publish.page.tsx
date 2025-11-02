@@ -7,17 +7,16 @@ import {
   Image as ImageIcon,
   Send,
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const cardClasses =
   'bg-white/60 backdrop-blur-[15px] border border-white/20 shadow-lg shadow-purple-900/10 rounded-2xl p-8';
 const formInputClasses =
   'bg-transparent border-0 border-b-2 border-slate-200 focus:ring-0 focus:outline-none focus:border-purple-600 transition duration-300 w-full py-3 px-1';
 
-interface PublishPageProps {
-  setCurrentPage: (page: PageType) => void;
-}
+const PublishPage = () => {
+  const navigate = useNavigate();
 
-const PublishPage: React.FC<PublishPageProps> = ({ setCurrentPage }) => {
   const [seoTitle, setSeoTitle] = useState('');
   const [metaDescription, setMetaDescription] = useState('');
   const [favicon, setFavicon] = useState<File | null>(null);
@@ -182,7 +181,7 @@ const PublishPage: React.FC<PublishPageProps> = ({ setCurrentPage }) => {
         {/* Actions */}
         <div className="pt-4 flex flex-col sm:flex-row justify-center gap-4">
           <button
-            onClick={() => setCurrentPage('page-builder')}
+            onClick={() => navigate('/products/page-builder')}
             className="flex items-center justify-center gap-2 w-full sm:w-auto bg-slate-100 text-slate-700 font-semibold py-3 px-6 rounded-lg hover:bg-slate-200 transition-colors duration-200"
           >
             <ArrowLeft size={18} />
@@ -191,7 +190,7 @@ const PublishPage: React.FC<PublishPageProps> = ({ setCurrentPage }) => {
           <button
             onClick={() => {
               alert('Page published successfully!');
-              setCurrentPage('products');
+              navigate('/products');
             }}
             className="flex items-center justify-center gap-2 w-full sm:w-auto bg-purple-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-purple-700 transition-colors duration-200 shadow-lg shadow-purple-500/30"
           >

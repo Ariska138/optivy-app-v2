@@ -5,6 +5,7 @@ import ActionConfigurator from './components/ActionConfigurator';
 import TrackingPixels from './components/TrackingPixels';
 import PreviewPanel from './components/PreviewPanel';
 import { PageType } from '@/types';
+import { useNavigate } from 'react-router-dom';
 
 const initialState: AppConfig = {
   afterSubmitAction: {
@@ -23,11 +24,9 @@ const initialState: AppConfig = {
   },
 };
 
-interface ProductsPageProps {
-  setCurrentPage: (page: PageType) => void;
-}
+const AfterSubmitPage = () => {
+  const navigate = useNavigate();
 
-const AfterSubmitPage: React.FC<ProductsPageProps> = ({ setCurrentPage }) => {
   const [config, setConfig] = useState<AppConfig>(initialState);
   const [outputJson, setOutputJson] = useState<string>('');
 
@@ -112,7 +111,7 @@ const AfterSubmitPage: React.FC<ProductsPageProps> = ({ setCurrentPage }) => {
   };
 
   const handleLaunch = () => {
-    setCurrentPage('page-builder');
+    navigate('/products/page-builder');
     // const finalConfig = generateFinalConfig();
     // setOutputJson(JSON.stringify(finalConfig, null, 2));
     // alert('Konfigurasi berhasil di-launching!');

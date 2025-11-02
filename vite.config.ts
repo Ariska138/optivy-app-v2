@@ -65,6 +65,11 @@ export default defineConfig(({ mode }) => {
         },
       }
       : {
+        proxy: {
+          '/api': {
+            target: 'https://api.optivy.co',
+          },
+        },
       }
   };
 })

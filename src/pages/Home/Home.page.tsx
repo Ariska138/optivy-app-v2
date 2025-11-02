@@ -9,31 +9,11 @@ import {
   BarChart,
   Rocket,
 } from 'lucide-react';
-// import Maintenance from './Maintenance';
 import Footer from './components/Footer';
+import { useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
-  // Mode maintenance tetap dipertahankan sebagai fitur
-  const [isMaintenanceMode, setIsMaintenanceMode] = useState(false);
-  // const navigate = useNavigate();
-
-  useEffect(() => {
-    // Memeriksa token maintenance
-    const savedToken = localStorage.getItem('maintenanceToken');
-    if (savedToken === 'secret_token_here') {
-      setIsMaintenanceMode(false);
-    }
-  }, []);
-
-  if (isMaintenanceMode) {
-    // return (
-    //   <Maintenance
-    //     setIsMaintenanceMode={(value) => {
-    //       setIsMaintenanceMode(value);
-    //     }}
-    //   />
-    // );
-  }
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-dvh bg-gray-50 text-gray-800 pb-20 md:pb-0">
@@ -53,7 +33,7 @@ export default function HomePage() {
           <Button
             size="sm"
             className="h-9 px-4 font-semibold bg-gray-800 hover:bg-gray-700 text-white md:h-10 md:px-6"
-            // onClick={() => navigate('/login', { replace: true })}
+            onClick={() => navigate('/login', { replace: true })}
           >
             Sign In
           </Button>
@@ -76,7 +56,7 @@ export default function HomePage() {
           <Button
             size="lg"
             className="h-12 px-8 text-white text-lg font-bold shadow-lg bg-indigo-600 hover:bg-indigo-700 transition-transform transform hover:scale-105"
-            // onClick={() => navigate('/register')}
+            onClick={() => navigate('/register')}
           >
             <Rocket className="h-6 w-6 mr-3" />
             Mulai Gratis
@@ -218,7 +198,7 @@ export default function HomePage() {
             size="lg"
             variant="secondary"
             className="h-12 px-8 text-lg font-bold bg-white text-indigo-600 hover:bg-gray-100 transition-transform transform hover:scale-105"
-            // onClick={() => navigate('/register')}
+            onClick={() => navigate('/register')}
           >
             Coba Gratis Sekarang
           </Button>

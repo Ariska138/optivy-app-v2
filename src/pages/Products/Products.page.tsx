@@ -13,12 +13,11 @@ import {
   lmsProducts,
   leadProducts,
 } from '../../constants/products';
+import { useNavigate } from 'react-router-dom';
 
-interface ProductsPageProps {
-  setCurrentPage: (page: PageType) => void;
-}
+const ProductsPage = () => {
+  const navigate = useNavigate();
 
-const ProductsPage: React.FC<ProductsPageProps> = ({ setCurrentPage }) => {
   const [activeTab, setActiveTab] = useState<ProductCategory>(
     ProductCategory.Fisik
   );
@@ -102,7 +101,7 @@ const ProductsPage: React.FC<ProductsPageProps> = ({ setCurrentPage }) => {
       <ActionBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        onAddProduct={() => setCurrentPage('product-creation')}
+        onAddProduct={() => navigate('/products/new')}
       />
       <div className="flex-1 overflow-auto bg-violet-50 px-4 pb-4">
         {renderContent()}

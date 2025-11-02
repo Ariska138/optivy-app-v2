@@ -14,12 +14,11 @@ import {
 import { BuilderProvider, useBuilder } from './context/BuilderContext';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import type { PageType } from '@/types';
+import { useNavigate } from 'react-router-dom';
 
-interface AppContentProps {
-  setCurrentPage: (page: PageType) => void;
-}
 
-function AppContent({ setCurrentPage }: AppContentProps) {
+function AppContent() {
+  const navigate = useNavigate();
   const {
     components,
     selectedId,
@@ -128,7 +127,7 @@ function AppContent({ setCurrentPage }: AppContentProps) {
             {isSaved ? 'Saved' : 'Save'}
           </button>
           <button
-            onClick={() => setCurrentPage('publish')}
+            onClick={() => navigate('/products/publish')}
             disabled={!isSaved}
             className={`px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-colors ${
               isSaved
@@ -174,17 +173,12 @@ function AppContent({ setCurrentPage }: AppContentProps) {
  * It wraps the entire application with DndProvider for drag-and-drop functionality
  * and BuilderProvider for centralized state management.
  */
-interface PageBuilderPageProps {
-  setCurrentPage: (page: PageType) => void;
-}
 
-const PageBuilderPage: React.FC<PageBuilderPageProps> = ({
-  setCurrentPage,
-}) => {
+const PageBuilderPage = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <BuilderProvider>
-        <AppContent setCurrentPage={setCurrentPage} />
+        <AppContent />
       </BuilderProvider>
     </DndProvider>
   );
