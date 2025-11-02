@@ -112,9 +112,10 @@ const AfterSubmitPage: React.FC<ProductsPageProps> = ({ setCurrentPage }) => {
   };
 
   const handleLaunch = () => {
-    const finalConfig = generateFinalConfig();
-    setOutputJson(JSON.stringify(finalConfig, null, 2));
-    alert('Konfigurasi berhasil di-launching!');
+    setCurrentPage('page-builder');
+    // const finalConfig = generateFinalConfig();
+    // setOutputJson(JSON.stringify(finalConfig, null, 2));
+    // alert('Konfigurasi berhasil di-launching!');
   };
 
   return (
@@ -176,3 +177,4 @@ const AfterSubmitPage: React.FC<ProductsPageProps> = ({ setCurrentPage }) => {
 };
 
 export default AfterSubmitPage;
+
