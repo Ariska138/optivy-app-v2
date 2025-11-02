@@ -12,10 +12,10 @@ yarn-debug.log*
 yarn-error.log*
 bun.lock
 
-#pages/Dashboard
+pages/Dashboard
 pages/Domains
 pages/Integrations
-pages/OrderManagement
+#pages/OrderManagement
 pages/ProductCreation
 pages/Products
 pages/Team
