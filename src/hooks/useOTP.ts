@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // useOTP.ts
-import { apiPost } from '@/src/lib/api';
+import { apiPost } from '@/lib/api';
 import { useState, useCallback } from 'react';
 
 // Define the structure for the API response and include generic T

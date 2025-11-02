@@ -9,8 +9,8 @@ import {
   type ReactNode,
 } from 'react';
 import { useNavigate } from 'react-router-dom'; // <-- 1. IMPORT useNavigate
-import type { User } from '@shared/types/user.type';
-import { apiGet, apiPost } from '@/src/lib/api';
+import type { User } from '@/types/user.type';
+import { apiGet, apiPost } from '@/lib/api';
 
 interface AuthState {
   isAuthenticated: boolean;

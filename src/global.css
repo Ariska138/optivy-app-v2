@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+
+@layer base {
+  :root {
+    /* Base */
+             /* hijau brand */
+  }
+
+  .dark {
+   
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}

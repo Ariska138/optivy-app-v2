@@ -1,81 +1,16 @@
-<!DOCTYPE html>
-<html lang="id">
+<!doctype html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manajemen Order - Ultra Modern Light Theme</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f5f3ff; /* Violet-50 */
-        }
-        /* Custom scrollbar for a subtle look */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #ede9fe; /* Violet-100 */
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #a78bfa; /* Violet-400 */
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #8b5cf6; /* Violet-500 */
-        }
-        
-        /* Style for the active tab */
-        .tab-active {
-            border-bottom-color: #7c3aed; /* Violet-600 */
-            color: #7c3aed;
-            font-weight: 600;
-            background-color: #f5f3ff; /* Violet-50 */
-        }
-        /* Alternating row colors for better readability */
-        .table-body tr:nth-child(even) {
-            background-color: #fafaff; 
-        }
-        .table-body tr:hover {
-            background-color: #ede9fe; /* Violet-100 */
-        }
-        
-        /* --- Slider Styles --- */
-        .summary-slider {
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
-            scrollbar-width: none;  /* Hide scrollbar for Firefox */
-        }
-        .summary-slider::-webkit-scrollbar {
-            display: none; /* Hide scrollbar for Chrome, Safari, Opera */
-        }
-        .summary-card {
-            scroll-snap-align: start;
-            flex-shrink: 0; /* Prevent cards from shrinking */
-        }
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "path": "https://aistudiocdn.com/path@^0.12.7",
-    "vite": "https://aistudiocdn.com/vite@^7.1.12",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.0",
-    "chart.js": "https://aistudiocdn.com/chart.js@^4.5.1",
-    "react-chartjs-2": "https://aistudiocdn.com/react-chartjs-2@^5.3.1"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
+    <title>optivy-app</title>
 </head>
+
 <body>
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
 </body>
+
 </html>
