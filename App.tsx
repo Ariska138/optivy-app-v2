@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Sidebar } from './components/layout/Sidebar';
 
-// import DashboardPage from './pages/Dashboard/Dashboard.page';
+import DashboardPage from './pages/Dashboard/Dashboard.page';
+import EditProfilePage from './pages/EditProfile/EditProfile.page';
 // import OrderManagementPage from './pages/OrderManagement/OrderManagement.page';
 // import ProductsPage from './pages/Products/Products.page';
 // import DomainsPage from './pages/Domains/Domains.page';
 // import TeamPage from './pages/Team/Team.page';
-import IntegrationsPage from './pages/Integrations/Integrations.page';
+// import IntegrationsPage from './pages/Integrations/Integrations.page';
 // import ProductCreationPage from './pages/ProductCreation/ProductCreation.page';
 
 import type { PageType } from './types';
@@ -17,8 +18,10 @@ const App: React.FC = () => {
 
   const renderPage = () => {
     switch (currentPage) {
-      // case 'dashboard':
-      //     return <DashboardPage />;
+      case 'dashboard':
+        return <DashboardPage setCurrentPage={setCurrentPage} />;
+      case 'edit-profile':
+        return <EditProfilePage setCurrentPage={setCurrentPage} />;
       // case 'orders':
       //     return <OrderManagementPage />;
       // case 'products':
@@ -27,12 +30,12 @@ const App: React.FC = () => {
       //     return <DomainsPage />;
       // case 'team':
       //     return <TeamPage />;
-      case 'integrations':
-        return <IntegrationsPage />;
+      //   case 'integrations':
+      //     return <IntegrationsPage />;
       //   case 'product-creation':
       //     return <ProductCreationPage setCurrentPage={setCurrentPage} />;
-      // default:
-      //     return <DashboardPage />;
+      default:
+        return <DashboardPage setCurrentPage={setCurrentPage} />;
     }
   };
 
