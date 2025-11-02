@@ -4,7 +4,13 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { ComponentSidebar } from './components/ComponentSidebar';
 import { Canvas } from './components/Canvas';
 import { PropertiesPanel } from './components/PropertiesPanel';
-import { Save, FileDown, FileUp, CircleDotDashed } from 'lucide-react';
+import {
+  Save,
+  FileDown,
+  FileUp,
+  CircleDotDashed,
+  WebhookIcon,
+} from 'lucide-react';
 import { BuilderProvider, useBuilder } from './context/BuilderContext';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import type { PageType } from '@/types';
@@ -122,7 +128,7 @@ function AppContent({ setCurrentPage }: AppContentProps) {
             {isSaved ? 'Saved' : 'Save'}
           </button>
           <button
-            onClick={() => setCurrentPage('products')}
+            onClick={() => setCurrentPage('publish')}
             disabled={!isSaved}
             className={`px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-colors ${
               isSaved
@@ -130,7 +136,7 @@ function AppContent({ setCurrentPage }: AppContentProps) {
                 : 'bg-gray-200 text-gray-400 cursor-not-allowed'
             }`}
           >
-            <Save size={16} />
+            <WebhookIcon size={16} />
             {isSaved ? 'Finish' : 'Finish'}
           </button>
         </div>
@@ -185,3 +191,4 @@ const PageBuilderPage: React.FC<PageBuilderPageProps> = ({
 };
 
 export default PageBuilderPage;
+

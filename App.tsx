@@ -15,6 +15,7 @@ import AfterSubmitPage from './pages/AfterSubmit/AfterSubmit.page';
 
 import type { PageType } from './types';
 import PageBuilderPage from './pages/PageBuilder/PageBuilder.page';
+import PublishPage from './pages/Publish/Publish.page';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageType>('dashboard');
@@ -46,6 +47,8 @@ const App: React.FC = () => {
         return <AfterSubmitPage setCurrentPage={setCurrentPage} />;
       case 'page-builder':
         return <PageBuilderPage setCurrentPage={setCurrentPage} />;
+      case 'publish':
+        return <PublishPage setCurrentPage={setCurrentPage} />;
       //   default:
       //     return <DashboardPage setCurrentPage={setCurrentPage} />;
     }
