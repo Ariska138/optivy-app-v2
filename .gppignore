@@ -13,9 +13,12 @@ yarn-error.log*
 bun.lock
 
 pages/Dashboard
-pages/Domains
+pages/DiscountCodes
+; pages/Domains
+pages/EditProfile
 pages/Integrations
-#pages/OrderManagement
-pages/ProductCreation
-pages/Products
+pages/LocalPayments
+pages/OrderManagement
+; pages/ProductCreation
+; pages/Products
 pages/Team

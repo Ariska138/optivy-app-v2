@@ -1,7 +1,7 @@
 import type { ReactNode, ReactElement } from 'react';
 
 // --- General App Types ---
-export type PageType = 'dashboard' | 'orders' | 'products' | 'domains' | 'team' | 'integrations' | 'product-creation' | 'edit-profile' | 'discount-codes' | 'local-payments';
+export type PageType = 'dashboard' | 'orders' | 'products' | 'domains' | 'team' | 'integrations' | 'product-creation' | 'edit-profile' | 'discount-codes' | 'local-payments' | 'after-submit';
 
 // --- Dashboard Types ---
 export interface Project {
