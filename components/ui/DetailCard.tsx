@@ -7,10 +7,13 @@ interface CardProps {
 
 const DetailCard: React.FC<CardProps> = ({ children, className = '' }) => {
   return (
-    <div className={`bg-white p-6 rounded-2xl shadow-sm border border-gray-200 ${className}`}>
+    <div
+      className={`bg-white p-6 rounded-2xl shadow-sm border border-gray-200 ${className}`}
+    >
       {children}
     </div>
   );
 };
 
 export default DetailCard;
+
