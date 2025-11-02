@@ -12,13 +12,13 @@ yarn-debug.log*
 yarn-error.log*
 bun.lock
 
-pages/Dashboard
-pages/DiscountCodes
-; pages/Domains
-pages/EditProfile
-pages/Integrations
-pages/LocalPayments
-pages/OrderManagement
-; pages/ProductCreation
-; pages/Products
-pages/Team
+src/pages/Dashboard
+src/pages/DiscountCodes
+src/pages/Domains
+src/pages/EditProfile
+src/pages/Integrations
+src/pages/LocalPayments
+src/pages/OrderManagement
+src/pages/ProductCreation
+src/pages/Products
+src/pages/Team
