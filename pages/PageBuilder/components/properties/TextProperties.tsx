@@ -1,10 +1,10 @@
 import React from 'react';
-import { ComponentPropsMap } from '../../types.ts';
-import { EditorProps } from '../PropertiesPanel.tsx';
-import { PropertyField } from '../ui/PropertyField.tsx';
-import { Textarea } from '../ui/Textarea.tsx';
-import { AlignmentControl } from '../ui/AlignmentControl.tsx';
-import { ColorInput } from '../ui/ColorInput.tsx';
+import { ComponentPropsMap } from '../../types';
+import { EditorProps } from '../PropertiesPanel';
+import { PropertyField } from '../ui/PropertyField';
+import { Textarea } from '../ui/Textarea';
+import { AlignmentControl } from '../ui/AlignmentControl';
+import { ColorInput } from '../ui/ColorInput';
 
 export const TextProperties: React.FC<EditorProps<ComponentPropsMap['Text']>> = ({ props, update }) => (
   <>

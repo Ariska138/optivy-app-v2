@@ -2,31 +2,32 @@
 import React, { useRef, useState } from 'react';
 import { useDrag } from 'react-dnd';
 import { X as XIcon, GripVertical } from 'lucide-react';
-import { CanvasComponent } from '../types.ts';
-import { InlineToolbar } from './InlineToolbar.tsx';
-import { useBuilder } from '../context/BuilderContext.tsx';
+import { CanvasComponent } from '../types';
+import { InlineToolbar } from './InlineToolbar';
+import { useBuilder } from '../context/BuilderContext';
 
 // --- Component Renderer Imports ---
-import { HeadlineRenderer } from './renderers/HeadlineRenderer.tsx';
-import { TextRenderer } from './renderers/TextRenderer.tsx';
-import { ButtonRenderer } from './renderers/ButtonRenderer.tsx';
-import { ImageRenderer } from './renderers/ImageRenderer.tsx';
-import { DividerRenderer } from './renderers/DividerRenderer.tsx';
-import { SectionRenderer } from './renderers/SectionRenderer.tsx';
-import { Columns2Renderer } from './renderers/Columns2Renderer.tsx';
-import { ListRenderer } from './renderers/ListRenderer.tsx';
-import { VideoRenderer } from './renderers/VideoRenderer.tsx';
-import { TestimonialRenderer } from './renderers/TestimonialRenderer.tsx';
-import { FaqRenderer } from './renderers/FaqRenderer.tsx';
-import { PricingRenderer } from './renderers/PricingRenderer.tsx';
-import { CountdownRenderer } from './renderers/CountdownRenderer.tsx';
+import { HeadlineRenderer } from './renderers/HeadlineRenderer';
+import { TextRenderer } from './renderers/TextRenderer';
+import { ButtonRenderer } from './renderers/ButtonRenderer';
+import { ImageRenderer } from './renderers/ImageRenderer';
+import { DividerRenderer } from './renderers/DividerRenderer';
+import { SectionRenderer } from './renderers/SectionRenderer';
+import { Columns2Renderer } from './renderers/Columns2Renderer';
+import { ListRenderer } from './renderers/ListRenderer';
+import { VideoRenderer } from './renderers/VideoRenderer';
+import { TestimonialRenderer } from './renderers/TestimonialRenderer';
+import { FaqRenderer } from './renderers/FaqRenderer';
+import { PricingRenderer } from './renderers/PricingRenderer';
+import { CountdownRenderer } from './renderers/CountdownRenderer';
+import { FormRenderer } from './renderers/FormRenderer';
 
 // --- Component Renderer Map ---
 const ComponentRenderers = {
   Headline: HeadlineRenderer, Text: TextRenderer, Button: ButtonRenderer, Image: ImageRenderer,
   Divider: DividerRenderer, Section: SectionRenderer, Columns2: Columns2Renderer, List: ListRenderer,
   Video: VideoRenderer, Testimonial: TestimonialRenderer, FAQ: FaqRenderer, Pricing: PricingRenderer,
-  Countdown: CountdownRenderer,
+  Countdown: CountdownRenderer, Form: FormRenderer,
 };
 
 // --- Main CanvasElement Component ---
@@ -89,8 +90,8 @@ export const CanvasElement: React.FC<CanvasElementProps> = ({ component }) => {
     return <Renderer {...rendererProps} />;
   };
 
-  const selectionClass = isSelected ? 'outline-2 outline-blue-500 outline-dashed' : 'outline-transparent hover:outline-1 hover:outline-blue-300/50 outline-dashed';
-  const hasFrame = component.type === 'Section' || component.type === 'Columns2' || component.type === 'Video';
+  const selectionClass = isSelected ? 'outline-2 outline-violet-500 outline-dashed' : 'outline-transparent hover:outline-1 hover:outline-violet-300/50 outline-dashed';
+  const hasFrame = component.type === 'Section' || component.type === 'Columns2' || component.type === 'Video' || component.type === 'Form';
   const draggingClass = isDragging ? 'opacity-30' : '';
 
   return (
@@ -101,7 +102,7 @@ export const CanvasElement: React.FC<CanvasElementProps> = ({ component }) => {
             <>
                 <div 
                     ref={dragHandleRef}
-                    className="absolute top-0 left-0 -translate-y-full bg-blue-500 text-white text-[10px] px-2 py-0.5 rounded-t-md z-10 select-none flex items-center gap-1 cursor-grab"
+                    className="absolute top-0 left-0 -translate-y-full bg-violet-600 text-white text-[10px] px-2 py-0.5 rounded-t-md z-10 select-none flex items-center gap-1 cursor-grab"
                     title={`Drag to move ${component.type}`}
                 >
                     <GripVertical size={12} />

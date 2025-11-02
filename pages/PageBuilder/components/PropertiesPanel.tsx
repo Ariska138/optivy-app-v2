@@ -1,19 +1,20 @@
 import React from 'react';
 import { X, Wrench } from 'lucide-react';
-import { useBuilder } from '../context/BuilderContext.tsx';
-import { AnyComponentProps, ComponentType } from '../types.ts';
+import { useBuilder } from '../context/BuilderContext';
+import { AnyComponentProps, ComponentType } from '../types';
 
 // Property Editor Imports
-import { ButtonProperties } from './properties/ButtonProperties.tsx';
-import { TextProperties } from './properties/TextProperties.tsx';
-import { HeadlineProperties } from './properties/HeadlineProperties.tsx';
-import { ImageProperties } from './properties/ImageProperties.tsx';
-import { ListProperties } from './properties/ListProperties.tsx';
-import { FaqProperties } from './properties/FaqProperties.tsx';
-import { VideoProperties } from './properties/VideoProperties.tsx';
-import { CountdownProperties } from './properties/CountdownProperties.tsx';
-import { SectionProperties } from './properties/SectionProperties.tsx';
-import { PricingProperties } from './properties/PricingProperties.tsx';
+import { ButtonProperties } from './properties/ButtonProperties';
+import { TextProperties } from './properties/TextProperties';
+import { HeadlineProperties } from './properties/HeadlineProperties';
+import { ImageProperties } from './properties/ImageProperties';
+import { ListProperties } from './properties/ListProperties';
+import { FaqProperties } from './properties/FaqProperties';
+import { VideoProperties } from './properties/VideoProperties';
+import { CountdownProperties } from './properties/CountdownProperties';
+import { SectionProperties } from './properties/SectionProperties';
+import { PricingProperties } from './properties/PricingProperties';
+import { FormProperties } from './properties/FormProperties';
 
 // Defines the props passed to each specific property editor component
 export interface EditorProps<T extends AnyComponentProps> {
@@ -34,6 +35,7 @@ const PropertyEditors: { [key in ComponentType]?: React.FC<EditorProps<any>> } =
   Countdown: CountdownProperties,
   Section: SectionProperties,
   Pricing: PricingProperties,
+  Form: FormProperties,
 };
 
 interface PropertiesPanelProps {
@@ -54,28 +56,28 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({ isOpen, onClos
 
   const panelContent = (
     <>
-      <div className="flex justify-between items-center mb-4 border-b border-border-color pb-2">
-        <h2 className="text-lg font-semibold text-text-secondary">Properties</h2>
-        <button onClick={onClose} className="md:hidden p-1 text-text-tertiary hover:text-text-primary">
+      <div className="flex justify-between items-center mb-4 border-b border-gray-200 pb-2">
+        <h2 className="text-lg font-semibold text-gray-600">Properties</h2>
+        <button onClick={onClose} className="md:hidden p-1 text-gray-400 hover:text-gray-800">
           <X size={20} />
         </button>
       </div>
 
       {selectedComponent ? (
         <div key={selectedComponent.id}>
-          <p className="text-sm font-medium mb-3 text-text-primary">
+          <p className="text-sm font-medium mb-3 text-gray-800">
             Editing: <span className="font-bold">{selectedComponent.type}</span>
           </p>
           {Editor ? (
             <Editor props={selectedComponent.props} update={handleUpdate} markUnsaved={markUnsaved} />
           ) : (
-            <p className="text-sm text-text-tertiary">No specific properties to edit for this component.</p>
+            <p className="text-sm text-gray-400">No specific properties to edit for this component.</p>
           )}
         </div>
       ) : (
-        <div className="text-center text-text-tertiary flex flex-col items-center justify-center h-full pt-16">
-          <Wrench className="w-12 h-12 mb-2 text-border-color" />
-          <h3 className="text-sm font-semibold text-text-secondary">No Component Selected</h3>
+        <div className="text-center text-gray-400 flex flex-col items-center justify-center h-full pt-16">
+          <Wrench className="w-12 h-12 mb-2 text-gray-300" />
+          <h3 className="text-sm font-semibold text-gray-600">No Component Selected</h3>
           <p className="text-xs">Click on a component in the canvas to see its properties.</p>
         </div>
       )}
@@ -92,7 +94,7 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({ isOpen, onClos
         onClick={onClose}
       ></div>
       <aside
-        className={`fixed bottom-0 right-0 w-full h-[70vh] bg-sidebar-bg p-4 overflow-y-auto z-50 transform transition-transform duration-300 ease-in-out md:relative md:w-80 md:h-auto md:border-l md:border-border-color md:transform-none md:transition-none
+        className={`fixed bottom-0 right-0 w-full h-[70vh] bg-white p-4 overflow-y-auto z-50 transform transition-transform duration-300 ease-in-out md:relative md:w-80 md:h-auto md:border-l md:border-gray-200 md:transform-none md:transition-none
         ${isOpen ? 'translate-y-0' : 'translate-y-full md:translate-y-0'}`}
       >
         {panelContent}

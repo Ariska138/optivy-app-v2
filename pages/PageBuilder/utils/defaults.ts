@@ -28,13 +28,13 @@ export const getDefaultProps = (type: ComponentType): ComponentPropsMap[Componen
     case 'Text':
       return createDefaultProps('Text', {
         text: 'This is a paragraph of text. You can edit it by clicking on it. Use the properties panel to change alignment and other styles.',
-        style: { textAlign: 'left', fontSize: '16px', color: '#333', backgroundColor: '#ffffff' },
+        style: { textAlign: 'left', fontSize: '16px', color: '#333', backgroundColor: 'transparent' },
       });
     case 'Headline':
       return createDefaultProps('Headline', {
         text: 'Important Headline',
         level: 'h2',
-        style: { textAlign: 'center', fontWeight: 'bold', backgroundColor: '#ffffff' },
+        style: { textAlign: 'center', fontWeight: 'bold', backgroundColor: 'transparent' },
       });
     case 'Image':
       return createDefaultProps('Image', {
@@ -107,6 +107,17 @@ export const getDefaultProps = (type: ComponentType): ComponentPropsMap[Componen
             targetDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
             style: {},
         });
+    case 'Form':
+      return createDefaultProps('Form', {
+        fields: [
+          { id: 'name', label: 'Nama Lengkap', required: true },
+          { id: 'email', label: 'Alamat Email', required: true },
+          { id: 'whatsapp', label: 'No. WhatsApp', required: false },
+        ],
+        buttonText: 'Dapatkan Sekarang!',
+        buttonColor: '#8b5cf6',
+        style: {},
+      });
     default:
       // This should never be reached if all types are handled
       const exhaustiveCheck: never = type;

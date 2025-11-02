@@ -1,9 +1,9 @@
 import React from 'react';
-import { ComponentPropsMap } from '../../types.ts';
-import { EditorProps } from '../PropertiesPanel.tsx';
-import { PropertyField } from '../ui/PropertyField.tsx';
-import { Input } from '../ui/Input.tsx';
-import { ColorInput } from '../ui/ColorInput.tsx';
+import { ComponentPropsMap } from '../../types';
+import { EditorProps } from '../PropertiesPanel';
+import { PropertyField } from '../ui/PropertyField';
+import { Input } from '../ui/Input';
+import { ColorInput } from '../ui/ColorInput';
 
 export const ButtonProperties: React.FC<EditorProps<ComponentPropsMap['Button']>> = ({ props, update }) => {
 

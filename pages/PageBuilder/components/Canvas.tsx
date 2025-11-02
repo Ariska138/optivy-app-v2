@@ -2,11 +2,11 @@
 import React from 'react';
 import { useDrop, DropTargetMonitor } from 'react-dnd';
 import { LayoutDashboard } from 'lucide-react';
-import { CanvasComponent as CanvasComponentType, ComponentType } from '../types.ts';
-import { CanvasElement } from './CanvasElement.tsx';
-import { useBuilder } from '../context/BuilderContext.tsx';
-import { findComponentInTree } from '../utils/component-utils.ts';
-import { ReorderTarget } from '../context/BuilderContext.tsx';
+import { CanvasComponent as CanvasComponentType, ComponentType } from '../types';
+import { CanvasElement } from './CanvasElement';
+import { useBuilder } from '../context/BuilderContext';
+import { findComponentInTree } from '../utils/component-utils';
+import { ReorderTarget } from '../context/BuilderContext';
 
 interface DropItem {
   id?: string;
@@ -50,8 +50,8 @@ const DropZone: React.FC<ReorderTarget & { isLast?: boolean }> = ({ parentId, co
     >
       {isOver && canDrop && (
         <div className="absolute inset-0 p-1">
-            <div className="w-full h-full border-2 border-dashed border-blue-400 bg-blue-50/80 rounded-lg flex items-center justify-center">
-              <span className="text-xs font-semibold text-blue-600">Drop here</span>
+            <div className="w-full h-full border-2 border-dashed border-violet-400 bg-violet-100/80 rounded-lg flex items-center justify-center">
+              <span className="text-xs font-semibold text-violet-600">Drop here</span>
             </div>
         </div>
       )}
@@ -105,11 +105,11 @@ export const Canvas: React.FC<CanvasProps> = ({ parentId = null, columnIndex }) 
     return (
       <div 
         ref={dropEmptyRef}
-        className={`w-full min-h-[120px] relative transition-all rounded-md flex items-center justify-center p-4 border-2 border-dashed ${isOverEmpty ? 'border-blue-500 bg-blue-50' : 'border-border-color'}`}
+        className={`w-full min-h-[120px] relative transition-all rounded-md flex items-center justify-center p-4 border-2 border-dashed ${isOverEmpty ? 'border-violet-500 bg-violet-100' : 'border-gray-300'}`}
       >
-        <div className="text-center text-text-tertiary pointer-events-none">
-          <LayoutDashboard className="w-12 h-12 mb-2 text-border-color mx-auto" />
-          <h3 className="text-sm font-semibold text-text-secondary">Drop Zone</h3>
+        <div className="text-center text-gray-400 pointer-events-none">
+          <LayoutDashboard className="w-12 h-12 mb-2 text-gray-300 mx-auto" />
+          <h3 className="text-sm font-semibold text-gray-600">Drop Zone</h3>
           <p className="text-xs">Drag components here.</p>
         </div>
       </div>

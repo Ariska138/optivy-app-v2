@@ -1,13 +1,12 @@
 import React from 'react';
-import { ComponentPropsMap } from '../../types.ts';
-import { EditorProps } from '../PropertiesPanel.tsx';
-import { PropertyField } from '../ui/PropertyField.tsx';
-// FIX: Corrected import path.
-import { Select } from '../ui/Select.tsx';
-import { Textarea } from '../ui/Textarea.tsx';
-import { AlignmentControl } from '../ui/AlignmentControl.tsx';
-import { Input } from '../ui/Input.tsx';
-import { ColorInput } from '../ui/ColorInput.tsx';
+import { ComponentPropsMap } from '../../types';
+import { EditorProps } from '../PropertiesPanel';
+import { PropertyField } from '../ui/PropertyField';
+import { Select } from '../ui/Select';
+import { Textarea } from '../ui/Textarea';
+import { AlignmentControl } from '../ui/AlignmentControl';
+import { Input } from '../ui/Input';
+import { ColorInput } from '../ui/ColorInput';
 
 export const HeadlineProperties: React.FC<EditorProps<ComponentPropsMap['Headline']>> = ({ props, update }) => {
   const handleSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {

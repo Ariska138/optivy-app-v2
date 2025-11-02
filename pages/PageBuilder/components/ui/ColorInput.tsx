@@ -7,7 +7,7 @@ interface ColorInputProps {
 
 export const ColorInput: React.FC<ColorInputProps> = ({ value = '#000000', onChange }) => {
   return (
-    <div className="flex items-center gap-2 w-full p-1.5 border border-border-color rounded bg-input-bg">
+    <div className="flex items-center gap-2 w-full p-1.5 border border-gray-300 rounded bg-gray-50">
       <div className="relative w-6 h-6 rounded overflow-hidden cursor-pointer border border-gray-300">
         <input
           type="color"

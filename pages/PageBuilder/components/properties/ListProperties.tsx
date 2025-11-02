@@ -1,11 +1,10 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import { Trash2, Plus } from 'lucide-react';
-import { ComponentPropsMap } from '../../types.ts';
-import { EditorProps } from '../PropertiesPanel.tsx';
-import { Input } from '../ui/Input.tsx';
-// FIX: Corrected import path.
-import { Select } from '../ui/Select.tsx';
+import { ComponentPropsMap } from '../../types';
+import { EditorProps } from '../PropertiesPanel';
+import { Input } from '../ui/Input';
+import { Select } from '../ui/Select';
 
 export const ListProperties: React.FC<EditorProps<ComponentPropsMap['List']>> = ({ props, update, markUnsaved }) => {
     const handleItemChange = (index: number, field: 'text' | 'icon', value: string) => {
@@ -41,7 +40,7 @@ export const ListProperties: React.FC<EditorProps<ComponentPropsMap['List']>> = 
                     <button onClick={() => handleDeleteItem(index)} className="p-1 text-red-500 hover:text-red-700 flex-shrink-0" aria-label="Delete item"><Trash2 size={16} /></button>
                 </div>
             ))}
-            <button onClick={handleAddItem} className="text-sm text-blue-600 hover:underline flex items-center gap-1"><Plus size={14} /> Add Item</button>
+            <button onClick={handleAddItem} className="text-sm text-violet-600 hover:underline flex items-center gap-1"><Plus size={14} /> Add Item</button>
         </div>
     );
 };

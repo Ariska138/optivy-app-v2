@@ -17,7 +17,7 @@ const options: { value: Alignment; icon: React.ReactNode; title: string }[] = [
 
 export const AlignmentControl: React.FC<AlignmentControlProps> = ({ value, onChange }) => {
   return (
-    <div className="flex items-center justify-between bg-item-bg p-1 rounded-md">
+    <div className="flex items-center justify-between bg-gray-100 p-1 rounded-md">
       {options.map((option) => (
         <button
           key={option.value}
@@ -25,8 +25,8 @@ export const AlignmentControl: React.FC<AlignmentControlProps> = ({ value, onCha
           onClick={() => onChange(option.value)}
           className={`p-1.5 rounded-md transition-colors w-full ${
             value === option.value
-              ? 'bg-accent text-white'
-              : 'text-text-secondary hover:bg-item-hover-bg'
+              ? 'bg-violet-600 text-white'
+              : 'text-gray-600 hover:bg-violet-100'
           }`}
         >
           {option.icon}

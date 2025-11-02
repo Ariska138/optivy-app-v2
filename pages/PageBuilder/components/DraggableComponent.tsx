@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDrag } from 'react-dnd';
-import { ComponentType } from '../types.ts';
+import { ComponentType } from '../types';
 
 interface DraggableComponentProps {
   type: ComponentType;
@@ -22,10 +22,10 @@ export const DraggableComponent: React.FC<DraggableComponentProps> = ({ type, ic
   return (
     <div 
       ref={ref}
-      className={`flex flex-col items-center justify-center text-center p-3 border rounded-lg cursor-grab bg-item-bg hover:bg-item-hover-bg hover:border-accent transition-all duration-200 transform hover:-translate-y-1 ${isDragging ? 'opacity-50' : 'opacity-100'}`}
+      className={`flex flex-col items-center justify-center text-center p-3 border border-gray-200 rounded-lg cursor-grab bg-gray-50 hover:bg-violet-100 hover:border-violet-300 transition-all duration-200 transform hover:-translate-y-1 ${isDragging ? 'opacity-50' : 'opacity-100'}`}
     >
       {icon}
-      <span className="text-xs mt-2 font-medium text-text-tertiary">{name}</span>
+      <span className="text-xs mt-2 font-medium text-gray-500">{name}</span>
     </div>
   );
 };

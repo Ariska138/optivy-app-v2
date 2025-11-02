@@ -14,7 +14,8 @@ export type ComponentType =
   | 'Testimonial'
   | 'FAQ'
   | 'Pricing'
-  | 'Countdown';
+  | 'Countdown'
+  | 'Form';
 
 // --- Prop Interfaces ---
 
@@ -58,6 +59,18 @@ interface TestimonialProps extends BaseProps {
   rating: number; // 0-5
 }
 
+interface FormField {
+    id: string;
+    label: string;
+    required: boolean;
+}
+
+interface FormProps extends BaseProps {
+    fields: FormField[];
+    buttonText: string;
+    buttonColor: string;
+}
+
 // Props for container components
 interface SectionProps extends BaseProps {
   children: CanvasComponent[];
@@ -82,6 +95,7 @@ export type ComponentPropsMap = {
   FAQ: FaqProps;
   Pricing: PricingProps;
   Countdown: CountdownProps;
+  Form: FormProps;
 };
 
 // The main CanvasComponent type, a discriminated union of all possible components

@@ -1,15 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import { ComponentSidebar } from './components/ComponentSidebar.tsx';
-import { Canvas } from './components/Canvas.tsx';
-import { PropertiesPanel } from './components/PropertiesPanel.tsx';
+import { ComponentSidebar } from './components/ComponentSidebar';
+import { Canvas } from './components/Canvas';
+import { PropertiesPanel } from './components/PropertiesPanel';
 import { Save, FileDown, FileUp, CircleDotDashed } from 'lucide-react';
-import { BuilderProvider, useBuilder } from './context/BuilderContext.tsx';
-import { MobileBottomNav } from './components/MobileBottomNav.tsx';
-import { PageType } from '@/types.ts';
+import { BuilderProvider, useBuilder } from './context/BuilderContext';
+import { MobileBottomNav } from './components/MobileBottomNav';
+import type { PageType } from '@/types';
 
-function AppContent() {
+interface AppContentProps {
+  setCurrentPage: (page: PageType) => void;
+}
+
+function AppContent({ setCurrentPage }: AppContentProps) {
   const {
     components,
     selectedId,
@@ -75,10 +79,10 @@ function AppContent() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-app-bg font-sans text-text-primary">
-      <header className="flex-shrink-0 bg-header-bg backdrop-blur-sm border-b border-border-color p-2 flex justify-between items-center z-20 h-16">
-        <div className="flex items-center gap-2 text-xl font-bold text-text-primary pl-2">
-          <CircleDotDashed />
+    <div className="flex flex-col h-screen bg-violet-50 font-sans text-gray-800">
+      <header className="flex-shrink-0 bg-white backdrop-blur-sm border-b border-gray-200 p-2 flex justify-between items-center z-20 h-16">
+        <div className="flex items-center gap-2 text-xl font-bold text-gray-800 pl-2">
+          <CircleDotDashed className="text-violet-600" />
           <span>Builder</span>
         </div>
         <div className="flex items-center gap-3 pr-2">
@@ -91,7 +95,7 @@ function AppContent() {
           />
           <button
             onClick={() => importInputRef.current?.click()}
-            className="text-sm font-medium flex items-center gap-2 p-2 rounded-lg hover:bg-item-hover-bg text-text-secondary"
+            className="text-sm font-medium flex items-center gap-2 p-2 rounded-lg hover:bg-violet-100 text-gray-600"
             title="Import JSON"
           >
             <FileUp size={18} />
@@ -99,7 +103,7 @@ function AppContent() {
           </button>
           <button
             onClick={handleExport}
-            className="text-sm font-medium flex items-center gap-2 p-2 rounded-lg hover:bg-item-hover-bg text-text-secondary"
+            className="text-sm font-medium flex items-center gap-2 p-2 rounded-lg hover:bg-violet-100 text-gray-600"
             title="Export JSON"
           >
             <FileDown size={18} />
@@ -111,23 +115,23 @@ function AppContent() {
             className={`px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-colors ${
               isSaved
                 ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                : 'bg-blue-600 text-white hover:bg-blue-700'
+                : 'bg-violet-600 text-white hover:bg-violet-700'
             }`}
           >
             <Save size={16} />
             {isSaved ? 'Saved' : 'Save'}
           </button>
           <button
-            onClick={() => {}}
-            disabled={isSaved}
+            onClick={() => setCurrentPage('products')}
+            disabled={!isSaved}
             className={`px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-colors ${
               isSaved
-                ? 'bg-blue-600 text-white hover:bg-blue-700'
+                ? 'bg-violet-600 text-white hover:bg-violet-700'
                 : 'bg-gray-200 text-gray-400 cursor-not-allowed'
             }`}
           >
             <Save size={16} />
-            {isSaved ? 'Next' : 'Next'}
+            {isSaved ? 'Finish' : 'Finish'}
           </button>
         </div>
       </header>
@@ -140,7 +144,7 @@ function AppContent() {
           className="flex-1 overflow-auto p-4 pb-20 md:pb-4"
           onClick={deselectAll}
         >
-          <div className="max-w-lg mx-auto bg-canvas-bg p-2 rounded-lg shadow-md min-h-full">
+          <div className="max-w-lg mx-auto bg-white p-2 rounded-lg shadow-md min-h-full">
             <Canvas />
           </div>
         </main>
@@ -164,21 +168,20 @@ function AppContent() {
  * It wraps the entire application with DndProvider for drag-and-drop functionality
  * and BuilderProvider for centralized state management.
  */
-interface ProductCreationPageProps {
+interface PageBuilderPageProps {
   setCurrentPage: (page: PageType) => void;
 }
 
-const PageBuilderPage: React.FC<ProductCreationPageProps> = ({
+const PageBuilderPage: React.FC<PageBuilderPageProps> = ({
   setCurrentPage,
 }) => {
   return (
     <DndProvider backend={HTML5Backend}>
       <BuilderProvider>
-        <AppContent />
+        <AppContent setCurrentPage={setCurrentPage} />
       </BuilderProvider>
     </DndProvider>
   );
 };
 
 export default PageBuilderPage;
-
