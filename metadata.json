@@ -1,0 +1,5 @@
+{
+  "name": "Order Management Dashboard",
+  "description": "A modern, ultra-light themed dashboard to manage digital, physical, LMS, and lead orders. It features a tabbed interface, dynamic summary panels, and robust filtering capabilities.",
+  "requestFramePermissions": []
+}
