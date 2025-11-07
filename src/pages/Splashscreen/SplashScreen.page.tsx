@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { useMaintenanceGate } from '@/hooks/useMaintenanceGate';
 // import Maintenance from './Maintenance'; // Pastikan path ini benar
 
 // Nama komponen diubah menjadi IndexPage untuk kejelasan,
@@ -8,26 +9,21 @@ import { useNavigate } from 'react-router-dom';
 // Anda bisa tetap menggunakan nama "Home" jika sesuai struktur proyek Anda.
 export default function SplashScreen() {
   const navigation = useNavigate();
-  const [isMaintenanceMode, setIsMaintenanceMode] = useState(true);
 
-  useEffect(() => {
-    // Logika untuk memeriksa token maintenance saat aplikasi pertama kali dimuat
-    const savedToken = localStorage.getItem('maintenanceToken');
-    const validToken = 'bismillah';
-
-    if (savedToken === validToken) {
-      // Jika token valid ditemukan, matikan mode maintenance
-      setIsMaintenanceMode(false);
+    const { hasAccess, isLoading } = useMaintenanceGate();
+  
+    if (isLoading) {
+      // Tampilkan loading saat cek localStorage
+      return (
+        <div className="p-8 text-center">Checking maintenance status...</div>
+      );
     }
-    // Jika tidak, isMaintenanceMode akan tetap true dan halaman Maintenance ditampilkan
-  }, []);
+  
+    // Jika TIDAK punya akses, paksa redirect ke /maintenance
+    if (!hasAccess) {
+      return <Navigate to="/maintenance" replace />;
+    }
 
-  if (isMaintenanceMode) {
-    // Tampilkan halaman maintenance jika mode aktif
-    // Berikan fungsi untuk menonaktifkan mode maintenance setelah token valid dimasukkan
-    // return <Maintenance setIsMaintenanceMode={setIsMaintenanceMode} />;
-    navigation('/maintenance');
-  }
 
   // Jika mode maintenance tidak aktif, tampilkan splash screen
   return <Loading />;

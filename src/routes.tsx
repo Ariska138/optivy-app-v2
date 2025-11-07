@@ -6,6 +6,7 @@ import RequireRole from './components/RequireRole';
 import { RouteErrorBoundary } from './components/RouteErrorBoundary';
 import MainLayout from './components/layout/MainLayout';
 import App from './App';
+import MaintenanceGate from './components/MaintenanceGate';
 
 // Lazy-loaded page components
 const Maintenance = lazy(() => import('./pages/Maintenance/Maintenance.page'));
@@ -55,42 +56,54 @@ export default function WebRoutes() {
           }
         >
           <Routes>
-            {/* Public Routes */}
+            {/* ============================================== */}
+            {/* KELOMPOK 1: Rute Maintenance (Selalu Dapat Diakses) */}
+            <Route path="/maintenance" element={<Maintenance />} />
+
+            {/* KELOMPOK 2: Rute Publik/Otentikasi (Perlu diakses untuk Login/Register) */}
+            {/* Rute ini TIDAK boleh dilindungi oleh MaintenanceGate, agar setelah mengisi token */}
+            {/* di halaman maintenance, Anda bisa langsung Login/ke Home tanpa redirect loop. */}
             <Route path="/" element={<IndexPage />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/maintenance" element={<Maintenance />} />
             <Route path="/login" element={<Login />} />
             <Route path="/status" element={<StatusPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/otp-verification" element={<OtpVerification />} />
 
-            {/* Protected Dashboard Routes */}
-            {/* <Route element={<ProtectedRoute />}> */}
-            <Route path="/" element={<App />}>
-              <Route path="/dashboard" element={<DashboardPage />} />
-              <Route path="/orders" element={<OrderManagementPage />} />
-              <Route path="/products" element={<ProductsPage />} />
-              <Route path="/discount-codes" element={<DiscountCodesPage />} />
-              <Route path="/local-payments" element={<LocalPaymentsPage />} />
-              <Route path="/domains" element={<DomainsPage />} />
-              <Route path="/team" element={<TeamPage />} />
-              <Route path="/integrations" element={<IntegrationsPage />} />
+            {/* ============================================== */}
+            {/* KELOMPOK 3: UI UTAMA YANG DILINDUNGI (MEMBUTUHKAN KODE MAINTENANCE) */}
+            {/* Semua rute di bawah ini akan diakses HANYA JIKA MaintenanceGate sudah PASS */}
+            <Route element={<MaintenanceGate />}>
+              {/* Rute-rute yang menggunakan Layout App (Dashboard, Orders, dll.) */}
+              {/* Note: Karena path="/" sudah diambil di atas, ubah path di sini ke path yang lebih spesifik jika App.tsx digunakan di sini */}
+              <Route element={<App />}>
+                <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/orders" element={<OrderManagementPage />} />
+                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/discount-codes" element={<DiscountCodesPage />} />
+                <Route path="/local-payments" element={<LocalPaymentsPage />} />
+                <Route path="/domains" element={<DomainsPage />} />
+                <Route path="/team" element={<TeamPage />} />
+                <Route path="/integrations" element={<IntegrationsPage />} />
 
-              {/* Example of a nested admin-only route */}
-              <Route element={<RequireRole role="admin" />}>
-                {/* <Route path="admin-settings" element={<AdminSettingsPage />} /> */}
+                {/* Rute Admin */}
+                <Route element={<RequireRole role="admin" />}>
+                  {/* ... admin routes ... */}
+                </Route>
               </Route>
+
+              {/* Rute Produk (tanpa Layout App) yang dilindungi */}
+              <Route path="/products/new" element={<ProductCreationPage />} />
+              <Route path="/products/submitted" element={<AfterSubmitPage />} />
+              <Route
+                path="/products/page-builder"
+                element={<PageBuilderPage />}
+              />
+              <Route path="/products/publish" element={<PublishPage />} />
             </Route>
+            {/* ============================================== */}
 
-            <Route path="/products/new" element={<ProductCreationPage />} />
-            <Route path="/products/submitted" element={<AfterSubmitPage />} />
-            <Route
-              path="/products/page-builder"
-              element={<PageBuilderPage />}
-            />
-            <Route path="/products/publish" element={<PublishPage />} />
-
-            {/* Not Found Route */}
+            {/* Not Found Route (Selalu Dapat Diakses) */}
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </Suspense>
