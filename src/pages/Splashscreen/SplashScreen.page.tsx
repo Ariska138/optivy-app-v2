@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 // karena ini adalah gerbang utama aplikasi, bukan halaman "home" publik.
 // Anda bisa tetap menggunakan nama "Home" jika sesuai struktur proyek Anda.
 export default function SplashScreen() {
+  const navigation = useNavigate();
   const [isMaintenanceMode, setIsMaintenanceMode] = useState(true);
 
   useEffect(() => {
@@ -25,6 +26,7 @@ export default function SplashScreen() {
     // Tampilkan halaman maintenance jika mode aktif
     // Berikan fungsi untuk menonaktifkan mode maintenance setelah token valid dimasukkan
     // return <Maintenance setIsMaintenanceMode={setIsMaintenanceMode} />;
+    navigation('/maintenance');
   }
 
   // Jika mode maintenance tidak aktif, tampilkan splash screen

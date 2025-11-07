@@ -8,6 +8,7 @@ import MainLayout from './components/layout/MainLayout';
 import App from './App';
 
 // Lazy-loaded page components
+const Maintenance = lazy(() => import('./pages/Maintenance/Maintenance.page'));
 const Home = lazy(() => import('./pages/Home/Home.page'));
 const Login = lazy(() => import('./pages/Login/Login.page'));
 const IndexPage = lazy(() => import('./pages/Splashscreen/SplashScreen.page'));
@@ -57,6 +58,7 @@ export default function WebRoutes() {
             {/* Public Routes */}
             <Route path="/" element={<IndexPage />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/maintenance" element={<Maintenance />} />
             <Route path="/login" element={<Login />} />
             <Route path="/status" element={<StatusPage />} />
             <Route path="/register" element={<RegisterPage />} />
@@ -68,13 +70,6 @@ export default function WebRoutes() {
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/orders" element={<OrderManagementPage />} />
               <Route path="/products" element={<ProductsPage />} />
-              <Route path="/products/new" element={<ProductCreationPage />} />
-              <Route path="/products/submitted" element={<AfterSubmitPage />} />
-              <Route
-                path="/products/page-builder"
-                element={<PageBuilderPage />}
-              />
-              <Route path="/products/publish" element={<PublishPage />} />
               <Route path="/discount-codes" element={<DiscountCodesPage />} />
               <Route path="/local-payments" element={<LocalPaymentsPage />} />
               <Route path="/domains" element={<DomainsPage />} />
@@ -86,7 +81,14 @@ export default function WebRoutes() {
                 {/* <Route path="admin-settings" element={<AdminSettingsPage />} /> */}
               </Route>
             </Route>
-            {/* </Route> */}
+
+            <Route path="/products/new" element={<ProductCreationPage />} />
+            <Route path="/products/submitted" element={<AfterSubmitPage />} />
+            <Route
+              path="/products/page-builder"
+              element={<PageBuilderPage />}
+            />
+            <Route path="/products/publish" element={<PublishPage />} />
 
             {/* Not Found Route */}
             <Route path="*" element={<ErrorPage />} />

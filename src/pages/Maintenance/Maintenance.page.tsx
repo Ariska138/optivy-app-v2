@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from './components/button';
 import {
   Card,
@@ -9,12 +9,31 @@ import {
 } from './components/card';
 import { ServerCog, CheckCircle, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
-export default function Maintenance({
-  setIsMaintenanceMode,
-}: {
-  setIsMaintenanceMode: (value: boolean) => void;
-}) {
+export default function Maintenance(
+  {
+    //   setIsMaintenanceMode,
+    // }: {
+    //   setIsMaintenanceMode: (value: boolean) => void;
+  }
+) {
+  const navigate = useNavigate();
+
+  const [isMaintenanceMode, setIsMaintenanceMode] = useState(true);
+
+  useEffect(() => {
+    // Logika untuk memeriksa token maintenance saat aplikasi pertama kali dimuat
+    const savedToken = localStorage.getItem('maintenanceToken');
+    const validToken = 'bismillah';
+
+    if (savedToken === validToken) {
+      // Jika token valid ditemukan, matikan mode maintenance
+      setIsMaintenanceMode(false);
+    }
+    // Jika tidak, isMaintenanceMode akan tetap true dan halaman Maintenance ditampilkan
+  }, []);
+
   const [maintenanceToken, setMaintenanceToken] = useState('');
   // State `tokenError` tidak lagi diperlukan karena kita pakai toast
   const [isSubmitting, setIsSubmitting] = useState(false); // 👈 2. Tambahkan state untuk loading
@@ -48,6 +67,10 @@ export default function Maintenance({
       }
     }, 500); // Penundaan 0.5 detik untuk efek loading
   };
+
+  if (!isMaintenanceMode) {
+    navigate('/home');
+  }
 
   return (
     <div className="min-h-screen bg-slate-100 flex items-center justify-center p-4">
