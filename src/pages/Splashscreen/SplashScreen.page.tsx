@@ -10,20 +10,19 @@ import { useMaintenanceGate } from '@/hooks/useMaintenanceGate';
 export default function SplashScreen() {
   const navigation = useNavigate();
 
-    const { hasAccess, isLoading } = useMaintenanceGate();
-  
-    if (isLoading) {
-      // Tampilkan loading saat cek localStorage
-      return (
-        <div className="p-8 text-center">Checking maintenance status...</div>
-      );
-    }
-  
-    // Jika TIDAK punya akses, paksa redirect ke /maintenance
-    if (!hasAccess) {
-      return <Navigate to="/maintenance" replace />;
-    }
+  const { hasAccess, isLoading } = useMaintenanceGate();
 
+  if (isLoading) {
+    // Tampilkan loading saat cek localStorage
+    return (
+      <div className="p-8 text-center">Checking maintenance status...</div>
+    );
+  }
+
+  // Jika TIDAK punya akses, paksa redirect ke /maintenance
+  if (!hasAccess) {
+    return <Navigate to="/maintenance" replace />;
+  }
 
   // Jika mode maintenance tidak aktif, tampilkan splash screen
   return <Loading />;
@@ -67,23 +66,23 @@ function Loading() {
   }, []);
 
   // Efek untuk navigasi setelah loading auth selesai
-  useEffect(() => {
-    if (!state.loading) {
-      // Set progress ke 100% saat auth selesai
-      setLoadingProgress(100);
-      setLoadingText('Selesai!');
+  // useEffect(() => {
+  //   if (!state.loading) {
+  //     // Set progress ke 100% saat auth selesai
+  //     setLoadingProgress(100);
+  //     setLoadingText('Selesai!');
 
-      // Tunggu sejenak agar animasi 100% terlihat, lalu navigasi
-      setTimeout(() => {
-        if (state.isAuthenticated) {
-          navigate('/dashboard', { replace: true });
-        } else {
-          // Arahkan ke halaman utama publik (landing page)
-          navigate('/home', { replace: true });
-        }
-      }, 500); // Penundaan singkat
-    }
-  }, [state.loading, state.isAuthenticated, state.user, navigate]);
+  // Tunggu sejenak agar animasi 100% terlihat, lalu navigasi
+  // setTimeout(() => {
+  //   if (state.isAuthenticated) {
+  //     navigate('/dashboard', { replace: true });
+  //   } else {
+  //     // Arahkan ke halaman utama publik (landing page)
+  //     navigate('/home', { replace: true });
+  //   }
+  // }, 500); // Penundaan singkat
+  //   }
+  // }, [state.loading, state.isAuthenticated, state.user, navigate]);
   //
   // JSX untuk SplashScreen (kode asli Anda)
   return (
