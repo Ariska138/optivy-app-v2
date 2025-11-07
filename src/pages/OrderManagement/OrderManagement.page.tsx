@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from 'react';
-import { Header } from '../../components/layout/Header';
 import { Tabs } from './components/Tabs';
 import { SummaryPanel } from './components/SummaryPanel';
 import { ActionBar } from './components/ActionBar';
@@ -63,7 +62,6 @@ const OrderManagementPage: React.FC = () => {
 
   return (
     <div className="flex-1 flex flex-col overflow-hidden">
-      <Header title="Manajemen Order" />
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
       <SummaryPanel activeTab={activeTab} data={filteredData} />
       <ActionBar

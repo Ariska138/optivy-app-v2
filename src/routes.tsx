@@ -63,33 +63,30 @@ export default function WebRoutes() {
             <Route path="/otp-verification" element={<OtpVerification />} />
 
             {/* Protected Dashboard Routes */}
-            <Route element={<ProtectedRoute />}>
-              <Route path="/" element={<App />}>
-                <Route path="/dashboard" element={<DashboardPage />} />
-                <Route path="/orders" element={<OrderManagementPage />} />
-                <Route path="/products" element={<ProductsPage />} />
-                <Route path="/products/new" element={<ProductCreationPage />} />
-                <Route
-                  path="/products/submitted"
-                  element={<AfterSubmitPage />}
-                />
-                <Route
-                  path="/products/page-builder"
-                  element={<PageBuilderPage />}
-                />
-                <Route path="/products/publish" element={<PublishPage />} />
-                <Route path="/discount-codes" element={<DiscountCodesPage />} />
-                <Route path="/local-payments" element={<LocalPaymentsPage />} />
-                <Route path="/domains" element={<DomainsPage />} />
-                <Route path="/team" element={<TeamPage />} />
-                <Route path="/integrations" element={<IntegrationsPage />} />
+            {/* <Route element={<ProtectedRoute />}> */}
+            <Route path="/" element={<App />}>
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/orders" element={<OrderManagementPage />} />
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/products/new" element={<ProductCreationPage />} />
+              <Route path="/products/submitted" element={<AfterSubmitPage />} />
+              <Route
+                path="/products/page-builder"
+                element={<PageBuilderPage />}
+              />
+              <Route path="/products/publish" element={<PublishPage />} />
+              <Route path="/discount-codes" element={<DiscountCodesPage />} />
+              <Route path="/local-payments" element={<LocalPaymentsPage />} />
+              <Route path="/domains" element={<DomainsPage />} />
+              <Route path="/team" element={<TeamPage />} />
+              <Route path="/integrations" element={<IntegrationsPage />} />
 
-                {/* Example of a nested admin-only route */}
-                <Route element={<RequireRole role="admin" />}>
-                  {/* <Route path="admin-settings" element={<AdminSettingsPage />} /> */}
-                </Route>
+              {/* Example of a nested admin-only route */}
+              <Route element={<RequireRole role="admin" />}>
+                {/* <Route path="admin-settings" element={<AdminSettingsPage />} /> */}
               </Route>
             </Route>
+            {/* </Route> */}
 
             {/* Not Found Route */}
             <Route path="*" element={<ErrorPage />} />

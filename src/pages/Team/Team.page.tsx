@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Header } from '../../components/layout/Header';
 import { ManagedTeamMember, TeamRole } from '../../types';
 import { TeamList } from './components/TeamList';
 import { InviteMemberModal } from './components/InviteMemberModal';
@@ -57,7 +56,7 @@ const TeamPage: React.FC = () => {
 
   return (
     <div className="flex-1 flex flex-col">
-      <Header title="Kelola Tim">
+      <div className="mt-6 mr-6 flex justify-end">
         <button
           onClick={() => setIsModalOpen(true)}
           className="flex items-center bg-violet-600 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-violet-700 transition"
@@ -77,7 +76,7 @@ const TeamPage: React.FC = () => {
           </svg>
           Undang Anggota
         </button>
-      </Header>
+      </div>
       <div className="flex-1 p-6">
         <TeamList members={members} onDelete={handleDeleteMember} />
       </div>

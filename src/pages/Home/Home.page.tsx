@@ -17,7 +17,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-dvh bg-gray-50 text-gray-800 pb-20 md:pb-0">
-      {/* Header */}
       <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm border-b">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">

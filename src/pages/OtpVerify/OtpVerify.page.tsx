@@ -124,7 +124,6 @@ const OtpVerification: React.FC = () => {
   return (
     <div className="bg-gray-100 flex items-center justify-center min-h-screen font-sans">
       <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md mx-4">
-        {/* Header (unchanged) */}
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-800">
             Verifikasi Akun Anda

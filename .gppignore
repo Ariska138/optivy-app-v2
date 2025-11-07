@@ -13,7 +13,7 @@ yarn-error.log*
 bun.lock
 
 src/pages/AfterSubmit
-src/pages/Dashboard
+# src/pages/Dashboard
 src/pages/DiscountCodes
 src/pages/Domains
 src/pages/EditProfile
@@ -21,7 +21,7 @@ src/pages/Error
 src/pages/Home
 src/pages/Integrations
 src/pages/LocalPayments
-#src/pages/Login
+# src/pages/Login
 src/pages/Maintenance
 src/pages/OrderManagement
 # src/pages/OtpVerify

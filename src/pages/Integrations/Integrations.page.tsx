@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Header } from '../../components/layout/Header';
 import { availableIntegrations } from '../../constants/integrations';
 import type { Integration, IntegrationType, Pixel } from '../../types';
 import { IntegrationCard } from './components/IntegrationCard';
@@ -136,7 +135,6 @@ const IntegrationsPage: React.FC = () => {
 
   return (
     <div className="h-full bg-violet-50">
-      <Header title="Kelola Integrasi" />
       <div className="p-8">
         {renderIntegrationList('whatsapp', 'Integrasi WhatsApp')}
         {renderIntegrationList('email', 'Integrasi Email Marketing')}

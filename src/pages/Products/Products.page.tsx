@@ -1,5 +1,4 @@
-import React, { useState, useMemo } from 'react';
-import { Header } from '../../components/layout/Header';
+import { useState, useMemo } from 'react';
 import { Tabs } from './components/Tabs';
 import { SummaryPanel } from './components/SummaryPanel';
 import { ActionBar } from './components/ActionBar';
@@ -95,7 +94,7 @@ const ProductsPage = () => {
 
   return (
     <div className="flex-1 flex flex-col overflow-hidden">
-      <Header title="Produk" />
+
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
       <SummaryPanel activeTab={activeTab} data={processedData[activeTab]} />
       <ActionBar

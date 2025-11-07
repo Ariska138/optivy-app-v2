@@ -9,6 +9,9 @@ import { toast } from 'sonner';
 
 import { Eye, EyeOff, Loader2 } from 'lucide-react';
 import { useOTP } from '@/hooks/useOTP';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 const UserIcon: React.FC = () => (
   <svg
@@ -44,21 +47,30 @@ const LoginForm: React.FC = () => {
   const [loginId, setLoginId] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null); // <--- TAMBAHKAN INI
 
   const { login } = useAuth();
   const { sendOtp } = useOTP();
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log('handle submit');
+
     e.preventDefault();
+    setError(null);
+    setIsLoading(true);
     // Handle login logic here
-    console.log({
-      loginId,
-      password,
-      rememberMe,
-    });
-    alert('Login form submitted! Check console for values.');
+    // console.log({
+    //   loginId,
+    //   password,
+    //   rememberMe,
+    // });
+    // alert('Login form submitted! Check console for values.');
+    navigate('/dashboard');
+    setIsLoading(false);
   };
 
   return (
@@ -92,22 +104,53 @@ const LoginForm: React.FC = () => {
           </div>
 
           <div className="mb-5">
-            <label
+            <Label
               htmlFor="password"
               className="block mb-2 text-sm font-medium text-gray-700"
             >
               Kata Sandi
-            </label>
-            <InputWithIcon
-              type="password"
-              id="password"
-              name="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              icon={<LockIcon />}
-              required
-            />
+            </Label>
+
+            <div className="relative">
+              <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                <LockIcon />
+              </span>
+              <Input
+                id="password"
+                type={showPassword ? 'text' : 'password'}
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                autoComplete="current-password"
+                disabled={isLoading}
+                className="w-full pl-10 pr-3 h-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition duration-200 bg-white"
+              />
+              {error && (
+                <p
+                  className="mt-4 p-3 text-sm text-red-700 bg-red-100 border border-red-300 rounded-lg transition-all duration-300"
+                  role="alert"
+                >
+                  {error}
+                </p>
+              )}
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon"
+                className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8 text-slate-500 hover:bg-slate-100"
+                onClick={() => setShowPassword((v) => !v)}
+                aria-label={
+                  showPassword ? 'Sembunyikan password' : 'Tampilkan password'
+                }
+              >
+                {showPassword ? (
+                  <EyeOff className="h-4 w-4" />
+                ) : (
+                  <Eye className="h-4 w-4" />
+                )}
+              </Button>
+            </div>
           </div>
 
           <div className="flex items-center justify-between mb-6">
@@ -133,13 +176,28 @@ const LoginForm: React.FC = () => {
               </a>
             </div>
           </div>
+          <Button
+            type="submit"
+            className="w-full h-11 text-base font-semibold bg-indigo-600 hover:bg-indigo-700 text-white"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <>
+                {/* Menggunakan ikon Loader2 untuk konsistensi */}
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Memproses...
+              </>
+            ) : (
+              'Masuk'
+            )}
+          </Button>
 
-          <button
+          {/* <button
             type="submit"
             className="w-full bg-primary text-white font-bold py-3 px-4 rounded-lg hover:bg-primary-dark transition-all duration-300 transform hover:scale-105"
           >
             Masuk
-          </button>
+          </button> */}
         </form>
 
         <div className="my-8 flex items-center">

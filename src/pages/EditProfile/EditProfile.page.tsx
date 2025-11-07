@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Header } from '../../components/layout/Header';
 import DetailCard from '../../components/ui/DetailCard';
 import { PageType } from '../../types';
 
@@ -75,7 +74,6 @@ const EditProfilePage: React.FC<EditProfilePageProps> = ({
 
   return (
     <div className="flex-1 flex flex-col">
-      <Header title="Edit Profile" />
       <div className="flex-1 p-6 bg-violet-50">
         <form onSubmit={handleSave}>
           <DetailCard className="max-w-4xl mx-auto">
