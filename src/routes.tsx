@@ -7,6 +7,7 @@ import { RouteErrorBoundary } from './components/RouteErrorBoundary';
 import MainLayout from './components/layout/MainLayout';
 import App from './App';
 import MaintenanceGate from './components/MaintenanceGate';
+import FormsNotificationsPage from './pages/FormsNotificationsPage/FormsNotifications.page';
 
 // Lazy-loaded page components
 const Maintenance = lazy(() => import('./pages/Maintenance/Maintenance.page'));
@@ -80,6 +81,10 @@ export default function WebRoutes() {
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/orders" element={<OrderManagementPage />} />
               <Route path="/products" element={<ProductsPage />} />
+              <Route
+                path="/forms-notifications"
+                element={<FormsNotificationsPage />}
+              />
               <Route path="/discount-codes" element={<DiscountCodesPage />} />
               <Route path="/local-payments" element={<LocalPaymentsPage />} />
               <Route path="/domains" element={<DomainsPage />} />

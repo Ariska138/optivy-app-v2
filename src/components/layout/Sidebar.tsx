@@ -5,6 +5,7 @@ import {
   DashboardIcon,
   DiscountIcon,
   DomainsIcon,
+  FormsIcon,
   IntegrationsIcon,
   LogoutIcon,
   OrdersIcon,
@@ -127,6 +128,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
             label="Produk"
             icon={<ProductsIcon />}
             to="/products"
+            isCollapsed={isSidebarCollapsed}
+          />
+
+          <NavItem
+            label="Forms & Notif"
+            icon={<FormsIcon />}
+            to="/forms-notifications"
             isCollapsed={isSidebarCollapsed}
           />
           <NavHeader label="Marketing" isCollapsed={isSidebarCollapsed} />

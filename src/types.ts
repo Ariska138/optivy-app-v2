@@ -242,3 +242,13 @@ export interface LocalPaymentMethod {
   logoUrl?: string; // Optional logo for display
   status: 'active' | 'inactive';
 }
+
+// --- Forms & Notifications Types ---
+export interface ProductForm {
+  id: string;
+  name: string;
+  productName: string;
+  submissions: number;
+  lastChanged: string;
+  status: 'active' | 'draft';
+}

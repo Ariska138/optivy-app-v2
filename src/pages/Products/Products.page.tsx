@@ -94,13 +94,12 @@ const ProductsPage = () => {
 
   return (
     <div className="flex-1 flex flex-col overflow-hidden">
-
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
       <SummaryPanel activeTab={activeTab} data={processedData[activeTab]} />
       <ActionBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        onAddProduct={() => navigate('/products/new')}
+        onAddProduct={() => navigate('/products/page-builder')}
       />
       <div className="flex-1 overflow-auto bg-violet-50 px-4 pb-4">
         {renderContent()}

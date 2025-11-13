@@ -111,10 +111,10 @@ const AfterSubmitPage = () => {
   };
 
   const handleLaunch = () => {
-    navigate('/products/page-builder');
+    alert('Konfigurasi berhasil di-launching!');
+    navigate('/forms-notifications');
     // const finalConfig = generateFinalConfig();
     // setOutputJson(JSON.stringify(finalConfig, null, 2));
-    // alert('Konfigurasi berhasil di-launching!');
   };
 
   return (
