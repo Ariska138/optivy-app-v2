@@ -11,6 +11,7 @@ import {
   OrdersIcon,
   PaymentIcon,
   ProductsIcon,
+  SubscriptionIcon,
   TeamIcon,
 } from '../icons/sidebar-icon';
 
@@ -155,6 +156,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
             label="Kelola Domain"
             icon={<DomainsIcon />}
             to="/domains"
+            isCollapsed={isSidebarCollapsed}
+          />
+          <NavItem
+            label="Langganan"
+            icon={<SubscriptionIcon />}
+            to="/subscription"
             isCollapsed={isSidebarCollapsed}
           />
           <NavItem
