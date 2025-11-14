@@ -89,13 +89,13 @@ const LoginForm: React.FC = () => {
               htmlFor="login_id"
               className="block mb-2 text-sm font-medium text-gray-700"
             >
-              Email atau No. WhatsApp
+              Email
             </label>
             <InputWithIcon
               type="text"
               id="login_id"
               name="login_id"
-              placeholder="Masukkan email atau nomor WA"
+              placeholder="Masukkan email"
               value={loginId}
               onChange={(e) => setLoginId(e.target.value)}
               icon={<UserIcon />}
@@ -209,11 +209,15 @@ const LoginForm: React.FC = () => {
         <SocialButton
           provider="Google"
           logoSrc="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+          disabled={true}
         />
 
         <p className="mt-8 text-center text-sm text-gray-600">
           Belum punya akun?{' '}
-          <a href="#" className="font-medium text-primary hover:underline">
+          <a
+            href="/register"
+            className="font-medium text-primary hover:underline"
+          >
             Daftar sekarang
           </a>
         </p>
