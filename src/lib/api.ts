@@ -293,3 +293,11 @@ export function apiDelete<TResp = unknown, TBody = unknown>(path: string, body?:
 function waitMs(ms: number) {
   return new Promise((r) => setTimeout(r, ms))
 }
+
+export const api = {
+  get: apiGet,
+  post: apiPost,
+  put: apiPut,
+  patch: apiPatch,
+  delete: apiDelete,
+}
