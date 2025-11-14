@@ -2,11 +2,16 @@ import React from 'react';
 import CurrentPlan from './components/CurrentPlan';
 import PlanCard from './components/PlanCard';
 import Faq from './components/Faq';
+import { useNavigate } from 'react-router-dom';
 
 const SubscriptionPage: React.FC = () => {
+  const navigate = useNavigate();
+
   const handleUpgrade = () => {
     // Handle upgrade logic, e.g., redirect to checkout
-    alert('Navigating to upgrade page...');
+    navigate('/subscription/payment');
+
+    // alert('Navigating to upgrade page...');
   };
 
   const proFeatures = [

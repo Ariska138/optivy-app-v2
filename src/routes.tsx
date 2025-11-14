@@ -9,6 +9,7 @@ import App from './App';
 import MaintenanceGate from './components/MaintenanceGate';
 import FormsNotificationsPage from './pages/FormsNotificationsPage/FormsNotifications.page';
 import SubscriptionPage from './pages/Subcription/Subscription.page';
+import PaymentPage from './pages/Subcription/Payment.page';
 
 // Lazy-loaded page components
 const Maintenance = lazy(() => import('./pages/Maintenance/Maintenance.page'));
@@ -92,6 +93,7 @@ export default function WebRoutes() {
               <Route path="/team" element={<TeamPage />} />
               <Route path="/integrations" element={<IntegrationsPage />} />
               <Route path="/subscription" element={<SubscriptionPage />} />
+              <Route path="/subscription/payment" element={<PaymentPage />} />
               {/* Rute Admin */}
               <Route element={<RequireRole role="admin" />}>
                 {/* ... admin routes ... */}
