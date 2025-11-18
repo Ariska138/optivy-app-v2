@@ -104,7 +104,7 @@ export default function WebRoutes() {
             {/* Rute Produk (tanpa Layout App) yang dilindungi */}
             <Route path="/products/new" element={<ProductCreationPage />} />
             <Route path="/products/submitted" element={<AfterSubmitPage />} />
-            <Route path="/products/publish" element={<PublishFormPage />} />
+            <Route path="/products/form-publish" element={<PublishFormPage />} />
             <Route
               path="/products/page-builder"
               element={<PageBuilderPage />}

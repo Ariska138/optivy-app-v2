@@ -22,7 +22,7 @@ const FormsNotificationsPage: React.FC = () => {
   }, [searchTerm]);
 
   const handleAddForm = () => {
-    navigate('/products/new');
+    navigate('/products/page-builder');
   };
 
   return (
