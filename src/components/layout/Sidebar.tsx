@@ -133,9 +133,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
           />
 
           <NavItem
-            label="Forms & Notif"
+            label="Landing Pages"
             icon={<FormsIcon />}
-            to="/forms-notifications"
+            to="/landing-pages"
             isCollapsed={isSidebarCollapsed}
           />
           <NavHeader label="Marketing" isCollapsed={isSidebarCollapsed} />

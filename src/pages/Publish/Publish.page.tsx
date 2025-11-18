@@ -190,7 +190,7 @@ const PublishPage = () => {
           <button
             onClick={() => {
               alert('Page published successfully!');
-              navigate('/products');
+              navigate('/landing-pages');
             }}
             className="flex items-center justify-center gap-2 w-full sm:w-auto bg-purple-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-purple-700 transition-colors duration-200 shadow-lg shadow-purple-500/30"
           >

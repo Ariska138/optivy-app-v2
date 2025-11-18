@@ -7,10 +7,10 @@ import { RouteErrorBoundary } from './components/RouteErrorBoundary';
 import MainLayout from './components/layout/MainLayout';
 import App from './App';
 import MaintenanceGate from './components/MaintenanceGate';
-import FormsNotificationsPage from './pages/FormsNotificationsPage/FormsNotifications.page';
 import SubscriptionPage from './pages/Subcription/Subscription.page';
 import PaymentPage from './pages/Subcription/Payment.page';
 import PublishFormPage from './pages/Products/PublishForm.page';
+import LandingPagesPage from './pages/LandingPages/LandingPages.page';
 
 // Lazy-loaded page components
 const Maintenance = lazy(() => import('./pages/Maintenance/Maintenance.page'));
@@ -84,10 +84,7 @@ export default function WebRoutes() {
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/orders" element={<OrderManagementPage />} />
               <Route path="/products" element={<ProductsPage />} />
-              <Route
-                path="/forms-notifications"
-                element={<FormsNotificationsPage />}
-              />
+              <Route path="/landing-pages" element={<LandingPagesPage />} />
               <Route path="/discount-codes" element={<DiscountCodesPage />} />
               <Route path="/local-payments" element={<LocalPaymentsPage />} />
               <Route path="/domains" element={<DomainsPage />} />
@@ -104,7 +101,10 @@ export default function WebRoutes() {
             {/* Rute Produk (tanpa Layout App) yang dilindungi */}
             <Route path="/products/new" element={<ProductCreationPage />} />
             <Route path="/products/submitted" element={<AfterSubmitPage />} />
-            <Route path="/products/form-publish" element={<PublishFormPage />} />
+            <Route
+              path="/products/form-publish"
+              element={<PublishFormPage />}
+            />
             <Route
               path="/products/page-builder"
               element={<PageBuilderPage />}

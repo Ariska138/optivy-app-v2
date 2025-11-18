@@ -1,27 +1,27 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ProductForm } from '../../types';
-import { productForms } from '../../constants/forms';
 import { ActionBar } from './components/ActionBar';
-import { FormTable } from './components/FormTable';
+import { landingPagesData } from './constants';
+import { LandingPageTable } from './components/LandingPageTable';
+import { LandingPage } from './types';
 
-const FormsNotificationsPage: React.FC = () => {
+const LandingPagesPage: React.FC = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredData = useMemo(() => {
     if (!searchTerm) {
-      return productForms;
+      return landingPagesData;
     }
     const lowercasedFilter = searchTerm.toLowerCase();
-    return productForms.filter(
-      (form) =>
-        form.name.toLowerCase().includes(lowercasedFilter) ||
-        form.productName.toLowerCase().includes(lowercasedFilter)
+    return landingPagesData.filter(
+      (page: LandingPage) =>
+        page.title.toLowerCase().includes(lowercasedFilter) ||
+        page.url.toLowerCase().includes(lowercasedFilter)
     );
   }, [searchTerm]);
 
-  const handleAddForm = () => {
+  const handleAddPage = () => {
     navigate('/products/page-builder');
   };
 
@@ -30,14 +30,14 @@ const FormsNotificationsPage: React.FC = () => {
       <ActionBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        onAddProduct={handleAddForm}
-        buttonText="Buat Form Baru"
+        onAddProduct={handleAddPage}
+        buttonText="Buat Landing Page Baru"
       />
       <div className="flex-1 overflow-auto bg-violet-50 px-4 pb-4 pt-4">
-        <FormTable forms={filteredData} />
+        <LandingPageTable pages={filteredData} />
       </div>
     </div>
   );
 };
 
-export default FormsNotificationsPage;
+export default LandingPagesPage;
