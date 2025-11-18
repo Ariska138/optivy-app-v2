@@ -99,7 +99,7 @@ const ProductsPage = () => {
       <ActionBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        onAddProduct={() => navigate('/products/page-builder')}
+        onAddProduct={() => navigate('/products/new')}
       />
       <div className="flex-1 overflow-auto bg-violet-50 px-4 pb-4">
         {renderContent()}

@@ -2,9 +2,7 @@ import React, { useState, useMemo, useCallback } from 'react';
 import {
   type ProductFormData,
   type ProductFormField,
-  type ProductCreationType,
   type FollowUpMessage,
-  type PageType,
 } from '../../types';
 import {
   INITIAL_FORM_DATA,
@@ -16,8 +14,6 @@ import {
 
 import ProductCreationCard from './components/ProductCreationCard';
 import ToggleSwitch from './components/ToggleSwitch';
-import ProductCreationHeader from './components/ProductCreationHeader';
-import ProductTypeSelection from './components/ProductTypeSelection';
 import CheckoutPreview from './components/CheckoutPreview';
 import { useNavigate } from 'react-router-dom';
 
@@ -28,14 +24,7 @@ const formInputClasses =
 const ProductCreationPage = () => {
   const navigate = useNavigate();
 
-  const [view, setView] = useState<'type-selection' | 'form'>('type-selection');
   const [formData, setFormData] = useState<ProductFormData>(INITIAL_FORM_DATA);
-
-  const handleProductTypeSelect = (type: ProductCreationType) => {
-    if (type === 'digital') {
-      setView('form');
-    }
-  };
 
   const handleInputChange = useCallback(
     <T extends HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(
@@ -950,12 +939,7 @@ const ProductCreationPage = () => {
 
   return (
     <div className="h-full w-full text-slate-800 bg-[linear-gradient(120deg,#f9f7fd_0%,#eef2f9_100%)] p-4 sm:p-6 lg:p-8 overflow-y-auto">
-      <ProductCreationHeader onBack={() => navigate('/products')} />
-      {view === 'type-selection' ? (
-        <ProductTypeSelection onSelect={handleProductTypeSelect} />
-      ) : (
-        digitalProductForm
-      )}
+      {digitalProductForm}
     </div>
   );
 };

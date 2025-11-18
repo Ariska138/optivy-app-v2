@@ -12,10 +12,10 @@ yarn-debug.log*
 yarn-error.log*
 bun.lock
 
-src/pages/AfterSubmit
-#src/pages/Dashboard
+#src/pages/AfterSubmit
+src/pages/Dashboard
 src/pages/DiscountCodes
-#src/pages/Domains
+src/pages/Domains
 src/pages/EditProfile
 src/pages/Error
 src/pages/Home
@@ -26,8 +26,8 @@ src/pages/Maintenance
 src/pages/OrderManagement
  src/pages/OtpVerify
 src/pages/PageBuilder
-src/pages/ProductCreation
-src/pages/Products
+#src/pages/ProductCreation
+#src/pages/Products
 src/pages/FormsNotificationsPage
 src/pages/Publish
 src/pages/Register

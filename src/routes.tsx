@@ -10,6 +10,7 @@ import MaintenanceGate from './components/MaintenanceGate';
 import FormsNotificationsPage from './pages/FormsNotificationsPage/FormsNotifications.page';
 import SubscriptionPage from './pages/Subcription/Subscription.page';
 import PaymentPage from './pages/Subcription/Payment.page';
+import PublishFormPage from './pages/Products/PublishForm.page';
 
 // Lazy-loaded page components
 const Maintenance = lazy(() => import('./pages/Maintenance/Maintenance.page'));
@@ -103,6 +104,7 @@ export default function WebRoutes() {
             {/* Rute Produk (tanpa Layout App) yang dilindungi */}
             <Route path="/products/new" element={<ProductCreationPage />} />
             <Route path="/products/submitted" element={<AfterSubmitPage />} />
+            <Route path="/products/publish" element={<PublishFormPage />} />
             <Route
               path="/products/page-builder"
               element={<PageBuilderPage />}
