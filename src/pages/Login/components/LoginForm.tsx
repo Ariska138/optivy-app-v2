@@ -12,6 +12,7 @@ import { useOTP } from '@/hooks/useOTP';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { email } from 'zod';
 
 const UserIcon: React.FC = () => (
   <svg
@@ -57,20 +58,36 @@ const LoginForm: React.FC = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    console.log('handle submit');
-
     e.preventDefault();
     setError(null);
     setIsLoading(true);
-    // Handle login logic here
-    // console.log({
-    //   loginId,
-    //   password,
-    //   rememberMe,
-    // });
-    // alert('Login form submitted! Check console for values.');
-    navigate('/dashboard');
-    setIsLoading(false);
+
+    const parsed = loginSchema.safeParse({
+      username: loginId.trim(),
+      password: password.trim(),
+    });
+
+    if (!parsed.success) {
+      toast.error('Username atau password tidak valid.');
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      await login(parsed.data.username, parsed.data.password);
+      toast.success('Login berhasil!');
+      // Navigasi akan di-handle oleh useEffect di atas
+      await sendOtp(parsed.data.username);
+
+      // Jika sukses, arahkan ke halaman verifikasi OTP
+      navigate(
+        `/otp-verification?email=${encodeURIComponent(parsed.data.username)}`
+      );
+    } catch {
+      toast.error('Login gagal. Periksa kembali username atau password Anda.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
