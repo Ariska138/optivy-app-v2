@@ -90,6 +90,8 @@ const MakeAccountPage = () => {
         ...validationResult.data,
       });
 
+      console.log('responseData: ', responseData);
+
       if (!responseData) {
         throw new Error(
           responseData.error || 'Terjadi kesalahan saat membuat akun.'

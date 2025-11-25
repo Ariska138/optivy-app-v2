@@ -122,11 +122,22 @@ function backoff(attempt: number, baseMs: number) {
   return Math.min(2000, baseMs * Math.pow(2, attempt)) * jitter
 }
 
-async function safeJson(res: Response) {
+async function safeJson(res: Response): Promise<ApiErrorShape> {
   const text = await res.text().catch(() => '')
   try {
-    return text ? JSON.parse(text) : { message: res.statusText }
+    const data = text ? JSON.parse(text) : {}
+    if (typeof data === 'string') {
+      // Jika body hanya string (bukan objek), gunakan sebagai pesan
+      return { message: data, code: String(res.status) }
+    }
+    // Cari pesan error di berbagai kunci
+    const message = data.error || data.message || data.msg || data.detail || res.statusText
+    const code = data.code || String(res.status)
+
+    // Kembalikan objek yang sesuai dengan ApiErrorShape
+    return { message, code, details: data }
   } catch {
+    // Jika gagal parse JSON atau body kosong
     return { message: text || res.statusText }
   }
 }
