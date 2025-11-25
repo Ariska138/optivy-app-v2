@@ -1,20 +1,34 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Documentation
 
-# Run and deploy your AI Studio app
+## development
 
-This contains everything you need to run your app locally.
+make .env.local
+fill
+VITE_API_BASE=<http://localhost:3000/api>
 
-View your app in AI Studio: https://ai.studio/apps/drive/1yjEvPPacsTj8Liy1I755ORYogwTJKJln
+run `bun install`
 
-## Run Locally
+run server api at <https://github.com/Ariska138/optivy-api>
 
-**Prerequisites:**  Node.js
+bun run dev
 
+open browser <http://localhost:5173/>
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+check integration api local
+
+<http://localhost:5173/status>
+
+## Deployment
+
+setup env
+`VITE_API_BASE=https://api.optivy.co/api`
+
+ci/cd: 'git push'
+
+<https://github.com/Ariska138/optivy-app-v2>
+
+can try on sandbox.optivy.co
+
+## Referensi
+
+- <https://github.com/Ariska138/optivy-app>
