@@ -4,8 +4,9 @@ import { TaskItem } from './TaskItem';
 import { TeamMemberItem } from './TeamMemberItem';
 import { dashboardTasks, dashboardTeamMembers } from '../../../constants/data';
 import { useNavigate } from 'react-router-dom';
+import { AuthState } from '@/contexts/AuthContext';
 
-export const RightSidebar = () => {
+export const RightSidebar = ({ state }: { state: AuthState }) => {
   const navigate = useNavigate();
 
   return (
@@ -13,14 +14,14 @@ export const RightSidebar = () => {
       <Card title="My Profile">
         <div className="flex flex-col items-center">
           <div className="relative">
-            <img
+            {/* <img
               src="https://i.pravatar.cc/150?u=zaenal"
               alt="Profile"
               className="w-24 h-24 rounded-full border-4 border-orange-400"
-            />
+            /> */}
           </div>
-          <p className="font-bold mt-3">Zaenal Suep</p>
-          <p className="text-sm text-gray-500">zaenalsuep@gmail.com</p>
+          <p className="font-bold mt-3">{state.user.name}</p>
+          <p className="text-sm text-gray-500">{state.user.username}</p>
           <p className="text-sm font-semibold text-gray-600 mt-4">
             70% You're Progress
           </p>

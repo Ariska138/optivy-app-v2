@@ -4,8 +4,11 @@ import { Card } from './components/Card';
 import { ProjectCard } from './components/ProjectCard';
 import { RightSidebar } from './components/RightSidebar';
 import { dashboardProjects } from '../../constants/data';
+import { useAuth } from '@/contexts/AuthContext';
 
 const DashboardPage = () => {
+  const { state } = useAuth();
+
   return (
     <div className="flex-1 flex flex-col">
       <div className="mt-6 mr-6 flex justify-end">
@@ -28,7 +31,7 @@ const DashboardPage = () => {
       </div>
       <div className="flex-1 p-6 grid grid-cols-12 gap-6">
         <div className="col-span-12 lg:col-span-8 flex flex-col gap-6">
-          <WelcomeBanner />
+          <WelcomeBanner state={state} />
           <ActivityChart />
           <Card title="Project" className="col-span-12">
             <div className="space-y-4">
@@ -38,7 +41,7 @@ const DashboardPage = () => {
             </div>
           </Card>
         </div>
-        <RightSidebar />
+        <RightSidebar state={state} />
       </div>
     </div>
   );
