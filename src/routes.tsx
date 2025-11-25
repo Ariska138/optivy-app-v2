@@ -80,39 +80,40 @@ export default function WebRoutes() {
             {/* <Route element={<MaintenanceGate />}> */}
             {/* Rute-rute yang menggunakan Layout App (Dashboard, Orders, dll.) */}
             {/* Note: Karena path="/" sudah diambil di atas, ubah path di sini ke path yang lebih spesifik jika App.tsx digunakan di sini */}
-            <Route element={<App />}>
-              <Route path="/dashboard" element={<DashboardPage />} />
-              <Route path="/orders" element={<OrderManagementPage />} />
-              <Route path="/products" element={<ProductsPage />} />
-              <Route path="/landing-pages" element={<LandingPagesPage />} />
-              <Route path="/discount-codes" element={<DiscountCodesPage />} />
-              <Route path="/local-payments" element={<LocalPaymentsPage />} />
-              <Route path="/domains" element={<DomainsPage />} />
-              <Route path="/team" element={<TeamPage />} />
-              <Route path="/integrations" element={<IntegrationsPage />} />
-              <Route path="/subscription" element={<SubscriptionPage />} />
-              <Route path="/subscription/payment" element={<PaymentPage />} />
-              {/* Rute Admin */}
-              <Route element={<RequireRole role="admin" />}>
-                {/* ... admin routes ... */}
+            <Route element={<ProtectedRoute />}>
+              <Route element={<App />}>
+                <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/orders" element={<OrderManagementPage />} />
+                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/landing-pages" element={<LandingPagesPage />} />
+                <Route path="/discount-codes" element={<DiscountCodesPage />} />
+                <Route path="/local-payments" element={<LocalPaymentsPage />} />
+                <Route path="/domains" element={<DomainsPage />} />
+                <Route path="/team" element={<TeamPage />} />
+                <Route path="/integrations" element={<IntegrationsPage />} />
+                <Route path="/subscription" element={<SubscriptionPage />} />
+                <Route path="/subscription/payment" element={<PaymentPage />} />
+                {/* Rute Admin */}
+                <Route element={<RequireRole role="admin" />}>
+                  {/* ... admin routes ... */}
+                </Route>
               </Route>
+
+              {/* Rute Produk (tanpa Layout App) yang dilindungi */}
+              <Route path="/products/new" element={<ProductCreationPage />} />
+              <Route path="/products/submitted" element={<AfterSubmitPage />} />
+              <Route
+                path="/products/form-publish"
+                element={<PublishFormPage />}
+              />
+              <Route
+                path="/products/page-builder"
+                element={<PageBuilderPage />}
+              />
+              <Route path="/products/publish" element={<PublishPage />} />
+              {/* </Route> */}
+              {/* ============================================== */}
             </Route>
-
-            {/* Rute Produk (tanpa Layout App) yang dilindungi */}
-            <Route path="/products/new" element={<ProductCreationPage />} />
-            <Route path="/products/submitted" element={<AfterSubmitPage />} />
-            <Route
-              path="/products/form-publish"
-              element={<PublishFormPage />}
-            />
-            <Route
-              path="/products/page-builder"
-              element={<PageBuilderPage />}
-            />
-            <Route path="/products/publish" element={<PublishPage />} />
-            {/* </Route> */}
-            {/* ============================================== */}
-
             {/* Not Found Route (Selalu Dapat Diakses) */}
             <Route path="*" element={<ErrorPage />} />
           </Routes>

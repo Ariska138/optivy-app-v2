@@ -13,6 +13,8 @@
 
 export type HttpMethod = 'GET' | 'HEAD' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
 
+export type QueryParams = Record<string, string | number | boolean | (string | number | boolean)[] | null | undefined>
+
 export interface ApiErrorShape {
   message: string
   code?: string
@@ -35,7 +37,7 @@ export class ApiError extends Error {
   }
 }
 
-type ApiInit = Omit<RequestInit, 'body' | 'method' | 'headers'> & {
+export type ApiInit = Omit<RequestInit, 'body' | 'method' | 'headers'> & {
   headers?: HeadersInit
   timeoutMs?: number
   retry?: number           // default: 2 (GET/HEAD only)
