@@ -208,13 +208,6 @@ const LoginForm: React.FC = () => {
               'Masuk'
             )}
           </Button>
-
-          {/* <button
-            type="submit"
-            className="w-full bg-primary text-white font-bold py-3 px-4 rounded-lg hover:bg-primary-dark transition-all duration-300 transform hover:scale-105"
-          >
-            Masuk
-          </button> */}
         </form>
 
         <div className="my-8 flex items-center">
